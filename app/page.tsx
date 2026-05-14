@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import FadeIn from "@/components/FadeIn";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const diensten = [
   {
@@ -28,6 +33,13 @@ const diensten = [
   },
 ];
 
+const stats = [
+  { getal: 2, suffix: "", label: "Professionele kapsters" },
+  { getal: 10, suffix: "+", label: "Jaar ervaring" },
+  { getal: 500, suffix: "+", label: "Tevreden klanten" },
+  { getal: 1, suffix: "", label: "Lanza partner salon" },
+];
+
 const galerij = [
   { src: "/images/galerij-1.jpg", alt: "Kapsel", aspect: "aspect-[4/5]" },
   { src: "/images/galerij-6.jpg", alt: "Kleurwerk", aspect: "aspect-square" },
@@ -35,220 +47,346 @@ const galerij = [
   { src: "/images/galerij-5.jpg", alt: "Styling", aspect: "aspect-[4/5]" },
 ];
 
+const heroWords = ["Vakmanschap", "dat", "straalt"];
+
 export default function HomePage() {
   return (
     <>
       {/* ── Hero ── */}
       <section className="relative flex items-center justify-center min-h-screen bg-charcoal overflow-hidden">
-        {/* Hero achtergrondafbeelding */}
         <Image
           src="/images/hero.png"
           alt="Zumka Kappers salon"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-25"
           priority
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/50 to-charcoal/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal/90" />
 
-        {/* Decoratieve goud-lijn */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-px h-[40vh] bg-gradient-to-b from-transparent via-accent/20 to-transparent" />
-        </div>
+        {/* Decoratieve lijnen */}
+        <motion.div
+          className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-2 items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 1 }}
+        >
+          <div className="w-px h-24 bg-gradient-to-b from-transparent to-accent/50" />
+          <span className="text-accent/40 text-[9px] tracking-[0.4em] [writing-mode:vertical-lr]">
+            VENRAY
+          </span>
+          <div className="w-px h-24 bg-gradient-to-b from-accent/50 to-transparent" />
+        </motion.div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-20">
-          <div className="flex items-center justify-center gap-4 mb-10">
+          {/* Label */}
+          <motion.div
+            className="flex items-center justify-center gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="h-px w-12 bg-accent/60" />
-            <span className="text-accent text-[10px] uppercase tracking-[0.4em] font-sans">
+            <span className="text-accent text-[10px] uppercase tracking-[0.4em]">
               Kapsalon Venray
             </span>
             <div className="h-px w-12 bg-accent/60" />
-          </div>
+          </motion.div>
 
-          <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl text-white leading-[1.1] mb-8">
-            Vakmanschap
-            <br />
-            <span className="italic text-accent">dat straalt</span>
+          {/* Geanimeerde heading — woord voor woord */}
+          <h1 className="font-heading text-6xl sm:text-7xl md:text-8xl text-white leading-[1.05] mb-8">
+            {heroWords.map((word, i) => (
+              <motion.span
+                key={word}
+                className={`inline-block mr-4 ${i === 2 ? "italic text-accent" : ""}`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 + i * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+              >
+                {word}
+              </motion.span>
+            ))}
           </h1>
 
-          <p className="text-white/50 text-base sm:text-lg max-w-md mx-auto mb-12 leading-relaxed">
+          <motion.p
+            className="text-white/50 text-base sm:text-lg max-w-md mx-auto mb-12 leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
+          >
             Persoonlijke aandacht, professioneel resultaat. Bij Zumka Kappers in
             Venray ben je in goede handen.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+          >
             <Link
               href="/boeken"
-              className="px-8 py-4 bg-accent text-white text-[11px] uppercase tracking-[0.25em] hover:bg-accent-dark transition-colors"
+              className="px-10 py-4 bg-accent text-white text-[11px] uppercase tracking-[0.3em] hover:bg-accent-dark transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
             >
               Boek een afspraak
             </Link>
             <Link
               href="/galerij"
-              className="px-8 py-4 border border-white/20 text-white/70 text-[11px] uppercase tracking-[0.25em] hover:border-white/60 hover:text-white transition-colors"
+              className="px-10 py-4 border border-white/20 text-white/70 text-[11px] uppercase tracking-[0.3em] hover:border-accent/60 hover:text-white transition-all duration-300"
             >
               Bekijk ons werk
             </Link>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-          <div className="w-px h-12 bg-gradient-to-b from-transparent to-white/20 mx-auto" />
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+        >
+          <motion.div
+            className="w-px bg-accent/40"
+            animate={{ height: ["0px", "48px", "0px"] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+      </section>
+
+      {/* ── Stats ── */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map(({ getal, suffix, label }, i) => (
+              <FadeIn key={label} delay={i * 0.1} direction="up">
+                <div className="text-center group">
+                  <p className="font-heading text-4xl md:text-5xl text-charcoal mb-2">
+                    <AnimatedCounter end={getal} suffix={suffix} />
+                  </p>
+                  <div className="w-8 h-px bg-accent mx-auto mb-3 transition-all duration-300 group-hover:w-16" />
+                  <p className="text-muted text-xs uppercase tracking-[0.15em]">{label}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Diensten ── */}
-      <section className="py-24 bg-surface">
+      <section className="py-28 bg-surface">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-accent text-[10px] uppercase tracking-[0.4em] mb-4">
-              Wat wij bieden
-            </p>
-            <h2 className="font-heading text-4xl md:text-5xl text-charcoal">
-              Onze diensten
-            </h2>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-20">
+              <p className="text-accent text-[10px] uppercase tracking-[0.4em] mb-4">
+                Wat wij bieden
+              </p>
+              <h2 className="font-heading text-4xl md:text-6xl text-charcoal">
+                Onze diensten
+              </h2>
+            </div>
+          </FadeIn>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {diensten.map(({ titel, beschrijving, icon }) => (
-              <div
-                key={titel}
-                className="bg-white p-8 border-t-2 border-accent hover:shadow-lg transition-shadow"
-              >
-                <span className="block text-accent text-2xl mb-6">{icon}</span>
-                <h3 className="font-heading text-xl text-charcoal mb-3">
-                  {titel}
-                </h3>
-                <p className="text-muted text-sm leading-relaxed">
-                  {beschrijving}
-                </p>
-              </div>
+            {diensten.map(({ titel, beschrijving, icon }, i) => (
+              <FadeIn key={titel} delay={i * 0.1}>
+                <motion.div
+                  className="bg-white p-8 border-t-2 border-accent h-full cursor-default"
+                  whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.08)" }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.span
+                    className="block text-accent text-3xl mb-6"
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {icon}
+                  </motion.span>
+                  <h3 className="font-heading text-xl text-charcoal mb-3">{titel}</h3>
+                  <p className="text-muted text-sm leading-relaxed">{beschrijving}</p>
+                </motion.div>
+              </FadeIn>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Link
-              href="/diensten"
-              className="text-[11px] uppercase tracking-[0.2em] text-accent hover:text-accent-dark transition-colors border-b border-accent/40 pb-0.5"
-            >
-              Alle diensten & prijzen →
-            </Link>
-          </div>
+          <FadeIn delay={0.3}>
+            <div className="text-center mt-14">
+              <Link
+                href="/diensten"
+                className="text-[11px] uppercase tracking-[0.2em] text-accent hover:text-accent-dark transition-colors border-b border-accent/40 pb-0.5"
+              >
+                Alle diensten & prijzen →
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* ── Over ons ── */}
-      <section className="py-24 bg-white">
+      <section className="py-28 bg-white overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Foto */}
-            <div className="relative">
-              <div className="aspect-[4/5] relative overflow-hidden">
-                <Image
-                  src="/images/kleuradvies.png"
-                  alt="Kleuradvies bij Zumka Kappers"
-                  fill
-                  className="object-cover"
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <FadeIn direction="right">
+              <div className="relative">
+                <div className="aspect-[4/5] relative overflow-hidden">
+                  <Image
+                    src="/images/kleuradvies.png"
+                    alt="Kleuradvies bij Zumka Kappers"
+                    fill
+                    className="object-cover"
+                  />
+                  {/* Goud overlay effect bij hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-accent/10"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </div>
+                {/* Decoratief kader */}
+                <motion.div
+                  className="absolute -bottom-6 -right-6 w-40 h-40 border border-accent/30"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                />
+                {/* Goud accent blokje */}
+                <motion.div
+                  className="absolute -top-4 -left-4 w-16 h-16 bg-accent/10 border border-accent/20"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 border border-accent/30" />
-            </div>
+            </FadeIn>
 
-            {/* Tekst */}
-            <div>
-              <p className="text-accent text-[10px] uppercase tracking-[0.4em] mb-4">
-                Ons verhaal
-              </p>
-              <h2 className="font-heading text-4xl md:text-5xl text-charcoal mb-8 leading-tight">
-                In mijn eentje
-                <br />
-                <span className="italic">begonnen</span>
-              </h2>
-              <div className="space-y-4 text-muted leading-relaxed">
-                <p>
-                  Zumka Kappers startte als een eenpersoonszaak met een grote
-                  passie voor haar en mensen. Inmiddels werken we met twee
-                  professionele kapsters die elke klant met dezelfde
-                  persoonlijke aandacht behandelen.
+            <FadeIn direction="left" delay={0.15}>
+              <div>
+                <p className="text-accent text-[10px] uppercase tracking-[0.4em] mb-4">
+                  Ons verhaal
                 </p>
-                <p>
-                  We geloven dat een goede knipbeurt meer is dan knippen alleen.
-                  Het is een moment voor jezelf — en dat voel je bij ons.
-                </p>
+                <h2 className="font-heading text-4xl md:text-6xl text-charcoal mb-10 leading-tight">
+                  In mijn eentje
+                  <br />
+                  <span className="italic">begonnen</span>
+                </h2>
+                <div className="space-y-5 text-muted leading-relaxed">
+                  <p>
+                    Zumka Kappers startte als een eenpersoonszaak met een grote
+                    passie voor haar en mensen. Inmiddels werken we met twee
+                    professionele kapsters die elke klant met dezelfde
+                    persoonlijke aandacht behandelen.
+                  </p>
+                  <p>
+                    We geloven dat een goede knipbeurt meer is dan knippen alleen.
+                    Het is een moment voor jezelf — en dat voel je bij ons.
+                  </p>
+                </div>
+
+                {/* Quote */}
+                <div className="mt-10 pl-6 border-l-2 border-accent">
+                  <p className="font-heading text-lg text-charcoal italic">
+                    &ldquo;Elk hoofd is uniek — elk kapsel ook.&rdquo;
+                  </p>
+                </div>
+
+                <div className="mt-10">
+                  <Link
+                    href="/over-ons"
+                    className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-accent hover:text-accent-dark transition-colors group"
+                  >
+                    Lees meer over ons
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
               </div>
-              <div className="mt-10">
-                <Link
-                  href="/over-ons"
-                  className="text-[11px] uppercase tracking-[0.2em] text-accent hover:text-accent-dark transition-colors border-b border-accent/40 pb-0.5"
-                >
-                  Lees meer over ons →
-                </Link>
-              </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* ── Galerij preview ── */}
-      <section className="py-24 bg-charcoal">
+      <section className="py-28 bg-charcoal overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-accent text-[10px] uppercase tracking-[0.4em] mb-4">
-              Ons werk
-            </p>
-            <h2 className="font-heading text-4xl md:text-5xl text-white">
-              Een inkijk in
-              <br />
-              <span className="italic">de salon</span>
-            </h2>
-          </div>
+          <FadeIn>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <div>
+                <p className="text-accent text-[10px] uppercase tracking-[0.4em] mb-4">
+                  Ons werk
+                </p>
+                <h2 className="font-heading text-4xl md:text-6xl text-white">
+                  Een inkijk in
+                  <br />
+                  <span className="italic">de salon</span>
+                </h2>
+              </div>
+              <Link
+                href="/galerij"
+                className="flex-shrink-0 text-[11px] uppercase tracking-[0.2em] text-white/40 hover:text-accent transition-colors self-start md:self-end"
+              >
+                Alle foto&#39;s →
+              </Link>
+            </div>
+          </FadeIn>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {galerij.map(({ src, alt, aspect }, i) => (
-              <div
-                key={i}
-                className={`${aspect} relative overflow-hidden group`}
-              >
-                <Image
-                  src={src}
-                  alt={alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/30 transition-colors duration-300" />
-              </div>
+              <FadeIn key={i} delay={i * 0.1}>
+                <motion.div
+                  className={`${aspect} relative overflow-hidden`}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Image
+                    src={src}
+                    alt={alt}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-400" />
+                </motion.div>
+              </FadeIn>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/galerij"
-              className="inline-block px-8 py-4 border border-white/20 text-white text-[11px] uppercase tracking-[0.25em] hover:border-accent hover:text-accent transition-colors"
-            >
-              Bekijk alle foto&#39;s
-            </Link>
           </div>
         </div>
       </section>
 
       {/* ── CTA Banner ── */}
-      <section className="py-24 bg-accent">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="font-heading text-4xl md:text-5xl text-white mb-6">
-            Klaar voor een
-            <br />
-            <span className="italic">nieuwe look?</span>
-          </h2>
-          <p className="text-white/70 mb-10 leading-relaxed">
-            Maak snel en eenvoudig een afspraak. We staan voor je klaar.
-          </p>
-          <Link
-            href="/boeken"
-            className="inline-block px-10 py-4 bg-charcoal text-white text-[11px] uppercase tracking-[0.25em] hover:bg-white hover:text-charcoal transition-colors"
-          >
-            Boek nu een afspraak
-          </Link>
+      <section className="relative py-32 bg-charcoal overflow-hidden">
+        {/* Achtergrond accent */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl" />
         </div>
+
+        <FadeIn>
+          <div className="relative max-w-2xl mx-auto px-6 text-center">
+            <div className="flex items-center justify-center gap-4 mb-10">
+              <div className="h-px w-12 bg-accent/40" />
+              <span className="text-accent/60 text-[10px] uppercase tracking-[0.4em]">
+                Maak een afspraak
+              </span>
+              <div className="h-px w-12 bg-accent/40" />
+            </div>
+
+            <h2 className="font-heading text-5xl md:text-6xl text-white mb-8 leading-tight">
+              Klaar voor een
+              <br />
+              <span className="italic text-accent">nieuwe look?</span>
+            </h2>
+            <p className="text-white/40 mb-12 leading-relaxed">
+              Maak snel en eenvoudig een afspraak online. We staan voor je klaar.
+            </p>
+            <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }}>
+              <Link
+                href="/boeken"
+                className="inline-block px-12 py-5 bg-accent text-white text-[11px] uppercase tracking-[0.3em] hover:bg-accent-dark transition-colors hover:shadow-xl hover:shadow-accent/20"
+              >
+                Boek nu een afspraak
+              </Link>
+            </motion.div>
+          </div>
+        </FadeIn>
       </section>
     </>
   );
