@@ -12,18 +12,15 @@ const videos = [
 ];
 
 const fotos = [
-  { src: "/images/pexels-1654834.jpg", alt: "Haarstyling" },
-  { src: "/images/pexels-3992848.jpg", alt: "Haar behandeling" },
-  { src: "/images/pexels-3992875.jpg", alt: "Kleurwerk" },
-  { src: "/images/pexels-3993308.jpg", alt: "Kapsel" },
-  { src: "/images/pexels-3993443.jpg", alt: "Balayage" },
-  { src: "/images/pexels-3993462.jpg", alt: "Highlights" },
-  { src: "/images/pexels-3993467.jpg", alt: "Styling" },
-  { src: "/images/pexels-4783286.jpg", alt: "Salon sfeer" },
-  { src: "/images/pexels-4783329.jpg", alt: "Kleurbehandeling" },
-  { src: "/images/pexels-7750115.jpg", alt: "Professioneel resultaat" },
-  { src: "/images/pexels-853427.jpg", alt: "Haar na behandeling" },
-  { src: "/images/pexels-8834071.jpg", alt: "Krullen" },
+  { src: "/images/galerij-1.jpg", alt: "Artistiek kapsel" },
+  { src: "/images/pexels-3993443.jpg", alt: "Knippen" },
+  { src: "/images/galerij-2.jpg", alt: "Zilverblond haar" },
+  { src: "/images/pexels-3993467.jpg", alt: "Föhnen" },
+  { src: "/images/galerij-3.jpg", alt: "Opgestoken haar" },
+  { src: "/images/pexels-3993462.jpg", alt: "Knippen close-up" },
+  { src: "/images/galerij-8.jpg", alt: "Kleurverloop" },
+  { src: "/images/pexels-4783286.jpg", alt: "Haar wassen" },
+  { src: "/images/pexels-3992875.jpg", alt: "Styling" },
 ];
 
 export default function GalerijPage() {

@@ -21,9 +21,9 @@ const stats = [
 ];
 
 const heroGalerij = [
-  { src: "/images/pexels-1654834.jpg", alt: "Haarstyling" },
-  { src: "/images/pexels-4783329.jpg", alt: "Kleurwerk" },
-  { src: "/images/pexels-8834071.jpg", alt: "Haar behandeling" },
+  { src: "/images/galerij-1.jpg", alt: "Artistiek kapsel" },
+  { src: "/images/galerij-2.jpg", alt: "Zilverblond haar" },
+  { src: "/images/galerij-8.jpg", alt: "Kleurverloop" },
 ];
 
 const heroWords = ["Vakmanschap", "dat", "straalt"];

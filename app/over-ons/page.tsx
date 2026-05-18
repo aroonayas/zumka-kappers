@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import FadeIn from "@/components/FadeIn";
 
 const waarden = [
   {
@@ -125,14 +126,18 @@ export default function OverOnsPage() {
                 schadelijke stoffen en zorgen voor langdurig resultaat.
               </p>
             </div>
-            <div className="bg-charcoal p-8 text-center">
-              <div className="aspect-square max-w-[120px] mx-auto bg-gradient-to-br from-neutral-600 to-neutral-800 flex items-center justify-center mb-4">
-                <span className="text-white/20 text-xs uppercase tracking-widest">
-                  Lanza logo
-                </span>
+            <div className="bg-charcoal overflow-hidden">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src="/images/galerij-7.jpg"
+                  alt="L'ANZA Healing Haircare"
+                  fill
+                  className="object-cover object-top opacity-80"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent" />
               </div>
-              <p className="text-white/50 text-xs uppercase tracking-widest">
-                Officieel Lanza salon
+              <p className="text-white/50 text-xs uppercase tracking-widest text-center pb-6 pt-3">
+                Officieel L&apos;ANZA salon
               </p>
             </div>
           </div>
