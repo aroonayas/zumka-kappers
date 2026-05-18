@@ -129,12 +129,11 @@ export default function OverOnsPage() {
             <div className="bg-charcoal overflow-hidden">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/galerij-7.jpg"
-                  alt="L'ANZA Healing Haircare"
+                  src="/images/galerij-2.jpg"
+                  alt="Lanza haarkleur resultaat"
                   fill
-                  className="object-cover object-top opacity-80"
+                  className="object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent" />
               </div>
               <p className="text-white/50 text-xs uppercase tracking-widest text-center pb-6 pt-3">
                 Officieel L&apos;ANZA salon
