@@ -38,14 +38,10 @@ export default function DienstenPage() {
           <FadeIn>
             <div className="flex items-center gap-4 mb-6">
               <div className="h-px w-8 bg-accent/60" />
-              <span className="text-accent text-[10px] uppercase tracking-[0.4em]">
-                Wat wij doen
-              </span>
+              <span className="text-accent text-[10px] uppercase tracking-[0.4em]">Wat wij doen</span>
             </div>
             <h1 className="font-heading text-5xl md:text-7xl">
-              Onze diensten
-              <br />
-              <span className="italic text-accent">& prijzen</span>
+              Onze diensten<br /><span className="italic text-accent">&amp; prijzen</span>
             </h1>
           </FadeIn>
         </div>
@@ -55,8 +51,7 @@ export default function DienstenPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <FadeIn>
             <p className="text-muted text-sm leading-relaxed mb-16 max-w-xl">
-              Onze prijzen zijn afhankelijk van haarlengte en behandeling. Neem
-              contact op of boek een afspraak voor een persoonlijk advies op maat.
+              Onze prijzen zijn afhankelijk van haarlengte en behandeling. Neem contact op of boek een afspraak voor een persoonlijk advies op maat.
             </p>
           </FadeIn>
 
@@ -83,11 +78,32 @@ export default function DienstenPage() {
               </FadeIn>
             ))}
           </div>
+
           <p className="mt-8 text-xs text-muted italic">
-            * Prijzen worden gecommuniceerd tijdens de afspraak op basis van
-            jouw haar en wensen.
+            * Prijzen worden gecommuniceerd tijdens de afspraak op basis van jouw haar en wensen.
           </p>
         </div>
+      </section>
+
+      {/* ── Video strip ── */}
+      <section className="relative h-72 overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/krullen.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-charcoal/65" />
+        <FadeIn>
+          <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+            <p className="font-heading text-3xl md:text-5xl text-white italic">
+              &ldquo;Elk kapsel, een kunstwerk&rdquo;
+            </p>
+          </div>
+        </FadeIn>
       </section>
 
       <section className="py-20 bg-surface">
@@ -95,18 +111,12 @@ export default function DienstenPage() {
           <FadeIn>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-accent text-[10px] uppercase tracking-[0.4em] mb-4">
-                  Abonnement
-                </p>
+                <p className="text-accent text-[10px] uppercase tracking-[0.4em] mb-4">Abonnement</p>
                 <h2 className="font-heading text-4xl text-charcoal mb-6">
-                  SlimKnippen —
-                  <br />
-                  <span className="italic">altijd verzorgd</span>
+                  SlimKnippen —<br /><span className="italic">altijd verzorgd</span>
                 </h2>
                 <p className="text-muted leading-relaxed mb-6">
-                  Met een SlimKnippen abonnement betaal je een vast bedrag per
-                  maand en kun je onbeperkt komen voor een knipbeurt. Nooit meer
-                  nadenken over je haar — gewoon altijd top.
+                  Met een SlimKnippen abonnement betaal je een vast bedrag per maand en kun je onbeperkt komen voor een knipbeurt. Nooit meer nadenken over je haar — gewoon altijd top.
                 </p>
                 <a
                   href="https://www.slimknippen.nl"
@@ -121,12 +131,8 @@ export default function DienstenPage() {
                 <div className="w-16 h-16 border border-accent/40 flex items-center justify-center mx-auto mb-6">
                   <span className="text-accent text-2xl">◎</span>
                 </div>
-                <h3 className="font-heading text-2xl text-white mb-3">
-                  Maandabonnement
-                </h3>
-                <p className="text-white/50 text-sm mb-8">
-                  Vaste prijs, onbeperkt knippen, altijd verzorgd haar.
-                </p>
+                <h3 className="font-heading text-2xl text-white mb-3">Maandabonnement</h3>
+                <p className="text-white/50 text-sm mb-8">Vaste prijs, onbeperkt knippen, altijd verzorgd haar.</p>
                 <Link
                   href="/boeken"
                   className="inline-block px-6 py-3 bg-accent text-white text-[11px] uppercase tracking-[0.2em] hover:bg-accent-dark transition-colors"

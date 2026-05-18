@@ -44,10 +44,10 @@ export default function OverOnsPage() {
             <div className="relative sticky top-24">
               <div className="aspect-[4/5] relative overflow-hidden">
                 <Image
-                  src="/images/kleuradvies.png"
-                  alt="Kleuradvies bij Zumka Kappers"
+                  src="/images/pexels-3992875.jpg"
+                  alt="Kapster aan het werk bij Zumka Kappers"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 w-32 h-32 border border-accent/30" />
